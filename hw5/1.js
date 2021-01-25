@@ -4,8 +4,8 @@
 // Строки должны нумероваться числами от 1 до 8, столбцы – латинскими буквами A, B, C, D, E, F, G, H.
 
 var main = document.querySelectorAll('.header')
-main.height = "1500px";
-main.width = "1500px";
+main.height = "570px";
+main.width = "570px";
 main.backgroundColor = "magenta";
 
 let upper_letters = {A:"01", B:"02", C:"03", D:"04", E:"05", F:"06", G:"07", H:"08"}
@@ -21,10 +21,10 @@ let whites = {  "1":"11", "2":"13", "3":"15", "4":"17",
                 "25":"71", "26":"73", "27":"75", "28":"77",
                 "29":"82", "30":"84", "31":"86", "32":"88",
             }
-let figures = { "11":"WL.jpg", "12":"WH.jpg", "13":"WS.jpg", "14":"WQ", "15":"WK", "16":"WS", "17":"WH", "18":"WL",
-                "21":"WP", "22":"WP", "23":"WP", "24":"WP", "25":"WP", "26":"WP", "27":"WP", "28":"WP",
-                "71":"BP", "72":"BP", "73":"BP", "74":"BP", "75":"BP", "76":"BP", "77":"BP", "78":"BP",
-                "81":"BL", "82":"BK", "83":"BS", "84":"BQ", "85":"BK", "86":"BS", "87":"BK", "88":"BL"
+let figures = { "11":"WL.png", "12":"WH.png", "13":"WS.png", "14":"WQ.png", "15":"WK.png", "16":"WS.png", "17":"WH.png", "18":"WL.png",
+                "21":"WP.png", "22":"WP.png", "23":"WP.png", "24":"WP.png", "25":"WP.png", "26":"WP.png", "27":"WP.png", "28":"WP.png",
+                "71":"BP.png", "72":"BP.png", "73":"BP.png", "74":"BP.png", "75":"BP.png", "76":"BP.png", "77":"BP.png", "78":"BP.png",
+                "81":"BL.png", "82":"BK.png", "83":"BS.png", "84":"BQ.png", "85":"BK.png", "86":"BS.png", "87":"BK.png", "88":"BL.png"
         }           
 
 
@@ -51,15 +51,20 @@ function whiteSquares (set) {
 }
 
 function setFigures(set){
-    var figure = document.getElementById(i);
-        figure.style.backgroundImage= set[i];
+    for (var i in set) {
+        var figure = document.getElementById(i);
+        var pic = document.createElement("img");
+        pic.setAttribute("src", set[i]);
+        figure.appendChild(pic)
+     //   figure.style.backgroundImage= set[i];
+    }
 }
 
 
 function addCommonDiv() {
     var element = document.createElement("div");
-    element.style.height = "370px";
-    element.style.width = "370px";
+    element.style.height = "550px";
+    element.style.width = "550px";
     element.class = "CommonBoard";
     element.style.backgroundColor = "magenta";
     element.style.styleFloat = "left";
@@ -72,8 +77,8 @@ function addCommonDiv() {
     for (var i = 0; i < 10; i++) {
         for  (var j = 0; j < 10; j++) {
             var square = document.createElement("div");
-            square.style.height = "35px";
-            square.style.width = "35px";
+            square.style.height = "53px";
+            square.style.width = "53px";
             square.style.borderCollapse = "collapse";
             square.style.border = "solid 1px black";
             square.style.float = "left";
@@ -91,7 +96,7 @@ function addCommonDiv() {
     letters(left_numbers);
     letters(right_numbers);
     whiteSquares(whites);
-
+    setFigures(figures);
 };
 
 Window.onload = addCommonDiv();
